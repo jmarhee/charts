@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  sysdepot-logging:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-05-09T10:08:39.866741-05:00"
+    description: A Helm chart for Kubernetes
+    digest: ac545bd91ad481795556a331b15bd4871e598d1e89d0c54ed338ab9afb2b8771
+    name: sysdepot-logging
+    type: application
+    urls:
+    - assets/sysdepot-logging-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-05-09T10:08:39.866166-05:00"
