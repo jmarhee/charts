@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: {{ .Values.name }}
+  labels:
+    {{- include "authoritative-dns.selectorLabels" . | nindent 4 }}
+spec:
+  #replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "authoritative-dns.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        serial: {{ randAlphaNum 5 | quote }}
+      {{- with .Values.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "authoritative-dns.selectorLabels" . | nindent 8 }}
+    spec:
+      hostNetwork: true
+      affinity:
+        {{- toYaml .Values.affinity | nindent 8 }}
+      tolerations:
+      # these tolerations are to have the daemonset runnable on control plane nodes
+      # remove them if your control plane nodes should not run pods
+      - key: node-role.kubernetes.io/control-plane
+        operator: Exists
+        effect: NoSchedule
+      - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: NoSchedule
+      containers:
+        - name: {{ .Values.name }}-bind
+          image: {{ .Values.image.image }}:{{ .Values.image.tag }}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: dns-tcp
+              containerPort: {{ .Values.service.targetPort }}
+              protocol: TCP
+            - name: dns-udp
+              containerPort: {{ .Values.service.targetPort }}
+              protocol: UDP
+          {{- if .Values.readinessProbe.enabled }}
+          readinessProbe:
+            tcpSocket:
+              port: dns-tcp
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          {{- end }}
+          {{- if .Values.readinessProbe.enabled }}
+          livenessProbe:
+            tcpSocket:
+              port: dns-udp
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          {{- end }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+          - name: bind-config
+            mountPath: /etc/bind
+          - name: bind-zone-config
+            mountPath: /var/lib/bind
+      volumes:
+        - name: bind-config
+          configMap:
+            name: bind-config
+            items:
+              - key: named.conf
+                path: named.conf
+        - name: bind-zone-config
+          configMap:
+            name: bind-zone-config
+{{- toYaml .Values.zoneconfigs | nindent 12 }}

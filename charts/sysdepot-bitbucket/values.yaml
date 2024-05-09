@@ -1,0 +1,25 @@
+# Default values for sysdepot-logging.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+namespace: jmarhee
+
+persistentvolume:
+  enabled: true
+  volSize: 5Gi
+
+# image:
+#   repository: sudheerc1190/rsyslog
+#   pullPolicy: IfNotPresent
+#   # Overrides the image tag whose default is the chart appVersion.
+#   tag: "latest"
+
+ingress:
+  enabled: true
+  fqdn: bitbucket.freeipad.internal
+
+env:
+  server_secure: "false"
+  server_scheme: "http"
+  server_proxy_port: "7990"

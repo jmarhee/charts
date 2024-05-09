@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: service-bitbucket
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: bitbucket
+  ports:
+  - name: bitbucket-http
+    port: 7990
+    targetPort: bitbucket-http
+  - name: bitbucket-ssh
+    port: 2222
+    targetPort: bitbucket-ssh
+  type: LoadBalancer

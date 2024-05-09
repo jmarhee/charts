@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bind-config
+data:
+{{- toYaml .Values.bindconfig | nindent 2 }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bind-zone-config
+data:
+{{- toYaml .Values.bindzones | nindent 2 }}

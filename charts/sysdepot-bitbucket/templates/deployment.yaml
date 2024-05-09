@@ -1,0 +1,46 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bitbucket-deployment
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: bitbucket
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: bitbucket
+  template:
+    metadata:
+      labels:
+        app: bitbucket
+    spec:
+      containers:
+      - name: bitbucket
+        image: atlassian/bitbucket-server
+        ports:
+        - containerPort: 7990
+          name: bitbucket-http
+        - containerPort: 22
+          name: bitbucket-ssh
+{{- if .Values.persistentvolume.enabled }}
+        volumeMounts:
+        - mountPath: /var/atlassian/application-data/bitbucket
+          name: bitbucket-data
+{{- end }}
+        env:
+        - name: SERVER_SECURE
+          value: "{{ .Values.env.server_secure }}"
+        - name: SERVER_SCHEME
+          value: "{{ .Values.env.server_scheme }}"
+        - name: SERVER_PROXY_PORT
+          value: "{{ .Values.env.server_proxy_port }}"
+        - name: SERVER_PROXY_NAME
+          value: ""
+{{- if .Values.persistentvolume.enabled }}
+      volumes:
+        - name: bitbucket-data
+          persistentVolumeClaim:
+            claimName: bitbucket-pvc
+{{- end }}

@@ -1,0 +1,75 @@
+replicaCount: 3
+region: ORD1
+name: authoritative-dns
+image:
+  image: jmarhee/bind9
+  pullPolicy: IfNotPresent
+  tag: 9.11
+
+imageConfig:
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 53
+  targetPort: 53
+  labels:
+
+# resources:
+#   requests:
+#     memory: 1Gi
+#     cpu: 300m
+
+readinessProbe:
+  enabled: true
+livenessProbe:
+  enabled: true
+
+bindzones:
+  sysdepot.internal: |
+      $TTL    604800
+      @       IN      SOA     ns1.sysdepot.internal. admin.sysdepot.internal. (
+                                   15         ; Serial
+                               604800         ; Refresh
+                                86400         ; Retry
+                              2419200         ; Expire
+                               604800 )       ; Negative Cache TTL
+      ;
+      sysdepot.internal.    IN      NS      ns1.sysdepot.internal.
+      sysdepot.internal.    IN      NS      ns2.sysdepot.internal.
+      sysdepot.internal.    IN      NS      ns3.sysdepot.internal.
+      ns1                   IN      A       100.107.143.48
+      ns2                   IN      A       100.107.5.112
+      ns3                   IN      A       100.77.232.96
+
+bindconfig:
+  named.conf: |
+    options {
+            directory "/var/cache/bind";
+            listen-on port 53 { any; };
+            auth-nxdomain yes;
+            forwarders { 
+                    8.8.8.8;
+                    8.8.4.4;
+            };
+            listen-on-v6 { ::1; };
+            allow-recursion {
+                    none;
+            };
+            allow-transfer {
+                    none;
+            };
+            allow-update {
+                    none;
+            };
+    };
+
+    zone "sysdepot.internal" {
+      type master;
+      file "/var/lib/bind/sysdepot.internal";
+    };
+
+zoneconfigs:
+  items:                 
+  - key: sysdepot.internal
+    path: sysdepot.internal

@@ -1,0 +1,15 @@
+{{- if .Values.persistentvolume.enabled -}}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: bitbucket-pvc
+  namespace: {{ .Values.namespace }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: {{ .Values.persistentvolume.volSize }}
+{{- end }}

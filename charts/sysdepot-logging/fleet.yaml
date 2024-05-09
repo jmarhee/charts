@@ -1,0 +1,19 @@
+defaultNamespace: sysdepot-system
+helm:
+  releaseName: syslog
+targetCustomizations:
+- name: elemental
+  helm:
+    values:
+      persistentvolume:
+        enabled: true
+        volSize: 2Gi
+  clusterGroup: has-storage
+- name: elemental-ephemeral
+  helm:
+    values:
+      persistentvolume:
+        enabled: false
+  clusterSelector:
+    matchLabels:
+      provider: nomount

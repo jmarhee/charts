@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-rsyslog-tcp
+  namespace: {{ .Values.namespace }}
+spec:
+  ports:
+    - port: 514
+      targetPort: 514
+      protocol: TCP
+  type: LoadBalancer
+  selector:
+    app: "rsyslog"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-rsyslog-udp
+  namespace: {{ .Values.namespace }}
+spec:
+  ports:
+    - port: 514
+      targetPort: 514
+      protocol: UDP
+  type: LoadBalancer
+  selector:
+    app: "rsyslog"
+# service-hive.default.svc.cluster.local
