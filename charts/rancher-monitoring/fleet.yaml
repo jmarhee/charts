@@ -8,4 +8,4 @@ helm:
   - values.yaml
   values:
     rke2ControllerManager:
-      enabled: false
+      enabled: true
