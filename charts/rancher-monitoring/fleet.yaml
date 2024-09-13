@@ -10,7 +10,7 @@ helm:
     proxy:
       enabled: true
     k3sServer:
-      enabled: false
+      enabled: true
     rke2ControllerManager:
       enabled: true
     rke2Scheduler:
