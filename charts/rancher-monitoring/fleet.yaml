@@ -1,14 +1,8 @@
 defaultNamespace: cattle-monitoring-system
 helm:
-  repo: https://charts.rancher.io
+  repo: https://git.rancher.io/charts
   chart: rancher-monitoring
-  version: 104.0.0+up45.31.1
+  version: 104.1.0+up57.0.3
   releaseName: rancher-monitoring
-  valuesFiles:
-    - values.yaml
-  values:
-    labels:
-      catalog.cattle.io/cluster-repo-name: rancher-charts
-# dependsOn:
-#   - name: "k8s-provisioner-prod-monitoring-crd"
-#   - name: "k8s-provisioner-prod-longhorn"
+  valuesFile:
+  - values.yaml
