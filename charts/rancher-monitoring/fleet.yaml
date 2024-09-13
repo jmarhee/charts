@@ -6,3 +6,6 @@ helm:
   releaseName: rancher-monitoring
   valuesFile:
   - values.yaml
+  values:
+    rke2ControllerManager:
+      enabled: false
