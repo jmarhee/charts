@@ -113,7 +113,8 @@ alertmanager:
     annotations: {}
     enabled: false
     hosts: []
-    labels: {}
+    labels:
+      catalog.cattle.io/cluster-repo-name: rancher-charts
     paths: []
     tls: []
   ingressPerReplica:
@@ -121,7 +122,8 @@ alertmanager:
     enabled: false
     hostDomain: ""
     hostPrefix: ""
-    labels: {}
+    labels:
+      catalog.cattle.io/cluster-repo-name: rancher-charts
     paths: []
     tlsSecretName: ""
     tlsSecretPerReplica:
@@ -140,7 +142,8 @@ alertmanager:
     clusterIP: ""
     externalIPs: []
     externalTrafficPolicy: Cluster
-    labels: {}
+    labels:
+      catalog.cattle.io/cluster-repo-name: rancher-charts
     loadBalancerIP: ""
     loadBalancerSourceRanges: []
     nodePort: 30903
@@ -407,7 +410,8 @@ defaultRules:
   create: true
   disabled: {}
   keepFiringFor: ""
-  labels: {}
+  labels:
+    catalog.cattle.io/cluster-repo-name: rancher-charts
   rules:
     alertmanager: true
     configReloaders: true
@@ -532,7 +536,8 @@ grafana:
     annotations: {}
     enabled: false
     hosts: []
-    labels: {}
+    labels:
+      catalog.cattle.io/cluster-repo-name: rancher-charts
     path: /
     tls: []
   namespaceOverride: ""
@@ -559,7 +564,8 @@ grafana:
   serviceMonitor:
     enabled: true
     interval: ""
-    labels: {}
+    labels:
+      catalog.cattle.io/cluster-repo-name: rancher-charts
     path: /metrics
     relabelings: []
     scheme: http
@@ -1061,7 +1067,8 @@ prometheus:
     annotations: {}
     enabled: false
     hosts: []
-    labels: {}
+    labels:
+      catalog.cattle.io/cluster-repo-name: rancher-charts
     paths: []
     tls: []
   ingressPerReplica:
@@ -1069,7 +1076,8 @@ prometheus:
     enabled: false
     hostDomain: ""
     hostPrefix: ""
-    labels: {}
+    labels:
+      catalog.cattle.io/cluster-repo-name: rancher-charts
     paths: []
     tlsSecretName: ""
     tlsSecretPerReplica:
@@ -1239,7 +1247,8 @@ prometheus:
     clusterIP: ""
     externalIPs: []
     externalTrafficPolicy: Cluster
-    labels: {}
+    labels:
+      catalog.cattle.io/cluster-repo-name: rancher-charts
     loadBalancerIP: ""
     loadBalancerSourceRanges: []
     nodePort: 30090
@@ -1285,7 +1294,8 @@ prometheus:
     annotations: {}
     enabled: false
     hosts: []
-    labels: {}
+    labels:
+      catalog.cattle.io/cluster-repo-name: rancher-charts
     nodePort: 30901
     paths: []
     servicePort: 10901
@@ -1298,7 +1308,8 @@ prometheus:
     httpNodePort: 30902
     httpPort: 10902
     httpPortName: http
-    labels: {}
+    labels:
+      catalog.cattle.io/cluster-repo-name: rancher-charts
     nodePort: 30901
     port: 10901
     portName: grpc
@@ -1312,7 +1323,8 @@ prometheus:
     httpNodePort: 30902
     httpPort: 10902
     httpPortName: http
-    labels: {}
+    labels:
+      catalog.cattle.io/cluster-repo-name: rancher-charts
     loadBalancerIP: ""
     loadBalancerSourceRanges: []
     nodePort: 30901
@@ -1408,7 +1420,8 @@ prometheusOperator:
         repository: rancher/mirrored-prometheus-operator-admission-webhook
         sha: ""
         tag: v0.72.0
-      labels: {}
+        labels:
+          catalog.cattle.io/cluster-repo-name: rancher-charts
       livenessProbe:
         enabled: true
         failureThreshold: 3
@@ -1443,7 +1456,8 @@ prometheusOperator:
         clusterIP: ""
         externalIPs: []
         externalTrafficPolicy: Cluster
-        labels: {}
+        labels:
+          catalog.cattle.io/cluster-repo-name: rancher-charts
         loadBalancerIP: ""
         loadBalancerSourceRanges: []
         nodePort: 31080
@@ -1520,7 +1534,8 @@ prometheusOperator:
     enabled: true
     name: ""
     namespace: kube-system
-  labels: {}
+  labels:
+    catalog.cattle.io/cluster-repo-name: rancher-charts
   namespaces: {}
   networkPolicy:
     enabled: false
@@ -1560,7 +1575,8 @@ prometheusOperator:
     clusterIP: ""
     externalIPs: []
     externalTrafficPolicy: Cluster
-    labels: {}
+    labels:
+      catalog.cattle.io/cluster-repo-name: rancher-charts
     loadBalancerIP: ""
     loadBalancerSourceRanges: []
     nodePort: 30080
@@ -1934,7 +1950,8 @@ thanosRuler:
     annotations: {}
     enabled: false
     hosts: []
-    labels: {}
+    labels:
+      catalog.cattle.io/cluster-repo-name: rancher-charts
     paths: []
     tls: []
   podDisruptionBudget:
@@ -1947,7 +1964,8 @@ thanosRuler:
     clusterIP: ""
     externalIPs: []
     externalTrafficPolicy: Cluster
-    labels: {}
+    labels:
+      catalog.cattle.io/cluster-repo-name: rancher-charts
     loadBalancerIP: ""
     loadBalancerSourceRanges: []
     nodePort: 30905
