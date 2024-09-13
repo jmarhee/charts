@@ -1,16 +1,14 @@
 defaultNamespace: cattle-monitoring-system
 helm:
-  # repo: https://charts.rancher.io
-  # repo: https://prometheus-community.github.io/helm-charts
-  # chart: kube-prometheus-stack
-  # version: 62.7.0
-  chart: https://rancher.somequant.club/k8s/clusters/c-m-ml2997jv/v1/catalog.cattle.io.clusterrepos/rancher-charts?chartName=rancher-monitoring&link=chart&version=104.1.0%2Bup57.0.3
+  repo: https://charts.rancher.io
+  chart: rancher-monitoring
+  version: 104.0.0+up45.31.1
   releaseName: rancher-monitoring
-  # valuesFiles:
-  #   - values.yaml
-  # values:
-  #   labels:
-  #     catalog.cattle.io/cluster-repo-name: rancher-charts
+  valuesFiles:
+    - values.yaml
+  values:
+    labels:
+      catalog.cattle.io/cluster-repo-name: rancher-charts
 # dependsOn:
 #   - name: "k8s-provisioner-prod-monitoring-crd"
 #   - name: "k8s-provisioner-prod-longhorn"
