@@ -6,6 +6,9 @@ helm:
   releaseName: rancher-monitoring
   valuesFiles:
     - values.yaml
+  values:
+    labels:
+      catalog.cattle.io/cluster-repo-name: rancher-charts
 # dependsOn:
 #   - name: "k8s-provisioner-prod-monitoring-crd"
 #   - name: "k8s-provisioner-prod-longhorn"
