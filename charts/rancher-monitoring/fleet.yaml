@@ -4,8 +4,8 @@ helm:
   chart: rancher-monitoring
   version: 104.1.0+up57.0.3
   releaseName: rancher-monitoring
-#   valuesFiles:
-#     - values.yaml
+  valuesFiles:
+    - values.yaml
 # dependsOn:
 #   - name: "k8s-provisioner-prod-monitoring-crd"
 #   - name: "k8s-provisioner-prod-longhorn"
