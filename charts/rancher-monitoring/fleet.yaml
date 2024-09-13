@@ -19,4 +19,8 @@ helm:
       enabled: true
     rke2IngressNginx:
       enabled: true
+    kubeStateMetrics:
+      enabled: true
+    kubelet:
+      enabled: true
       
