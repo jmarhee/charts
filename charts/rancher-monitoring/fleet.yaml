@@ -5,6 +5,16 @@ helm:
   version: 104.1.0+up57.0.3
   releaseName: rancher-monitoring
   values:
+    global:
+      cattle:
+        clusterId: c-m-nqn6j745
+        clusterName: rke2-fleet-monitor
+        rkePathPrefix: ""
+        rkeWindowsPathPrefix: ""
+        systemDefaultRegistry: registry.rancher.com
+        systemProjectId: p-cvnt4
+        url: https://rancher.somequant.club
+      systemDefaultRegistry: registry.rancher.com
     prometheus:
       prometheusSpec:
         retentionSize: 50GiB
