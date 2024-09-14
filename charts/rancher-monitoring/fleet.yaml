@@ -7,14 +7,14 @@ helm:
   values:
     global:
       cattle:
-        clusterId: c-m-nqn6j745
+        #clusterId: c-m-nqn6j745
         clusterName: rke2-fleet-monitor
-        rkePathPrefix: ""
-        rkeWindowsPathPrefix: ""
-        systemDefaultRegistry: registry.rancher.com
+        #rkePathPrefix: ""
+        #rkeWindowsPathPrefix: ""
+        #systemDefaultRegistry: registry.rancher.com
         systemProjectId: p-cvnt4
-        url: https://rancher.somequant.club
-      systemDefaultRegistry: registry.rancher.com
+        #url: https://rancher.somequant.club
+      #systemDefaultRegistry: registry.rancher.com
     prometheus:
       prometheusSpec:
         retentionSize: 50GiB
