@@ -7,7 +7,7 @@ helm:
   valuesFile:
   - values.yaml
   values:
-    proxy:
+    rkeProxy:
       enabled: true
     rke2ControllerManager:
       enabled: true
@@ -18,7 +18,11 @@ helm:
     rke2Etcd:
       enabled: true
     rke2IngressNginx:
+      clients:
+        enabled: true
       enabled: true
+      proxy:
+        enabled: true
     kubeStateMetrics:
       enabled: true
     kubelet:
