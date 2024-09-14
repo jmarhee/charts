@@ -4,27 +4,18 @@ helm:
   chart: rancher-monitoring
   version: 104.1.0+up57.0.3
   releaseName: rancher-monitoring
-  valuesFile:
-  - values.yaml
   values:
-    rkeProxy:
-      enabled: true
+    prometheus:
+      prometheusSpec:
+        retentionSize: 50GiB
     rke2ControllerManager:
-      enabled: true
-    rke2Scheduler:
-      enabled: true
-    rke2Proxy:
       enabled: true
     rke2Etcd:
       enabled: true
     rke2IngressNginx:
-      clients:
-        enabled: true
       enabled: true
-      proxy:
-        enabled: true
-    kubeStateMetrics:
+    rke2Proxy:
       enabled: true
-    kubelet:
+    rke2Scheduler:
       enabled: true
       
