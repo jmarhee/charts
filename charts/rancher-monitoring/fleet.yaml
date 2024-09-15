@@ -7,7 +7,7 @@ helm:
   values:
     global:
       cattle:
-        #clusterId: c-m-nqn6j745
+        clusterId: c-m-76wxlxs5
         clusterName: rke2-fleet-monitor
         #rkePathPrefix: ""
         #rkeWindowsPathPrefix: ""
