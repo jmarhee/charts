@@ -7,8 +7,9 @@ helm:
   values:
     global:
       cattle:
-        clusterId: c-m-76wxlxs5
-        clusterName: rke2-fleet-monitor
+        #clusterId: c-m-76wxlxs5
+        clusterId: fleet-default/rke2-fleet-monitor
+        #clusterName: rke2-fleet-monitor
         #rkePathPrefix: ""
         #rkeWindowsPathPrefix: ""
         #systemDefaultRegistry: registry.rancher.com
