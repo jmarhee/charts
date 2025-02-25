@@ -1,9 +1,31 @@
 apiVersion: v1
 entries:
+  authoritative-dns:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-02-25T20:19:43.104323054Z"
+    description: A Helm chart for Kubernetes
+    digest: b25628558cb5ea2dad98301f340c2699dd47189d6d9a830bfb0fb150fe996927
+    name: authoritative-dns
+    type: application
+    urls:
+    - assets/authoritative-dns-0.1.0.tgz
+    version: 0.1.0
+  sysdepot-bitbucket:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-02-25T20:19:43.104857746Z"
+    description: A Helm chart for Kubernetes
+    digest: 21a91c5f31a2013e0f6e8b7d6ab3d3e22cb3d68fdfa3f49a9e157529cd5c3a61
+    name: sysdepot-bitbucket
+    type: application
+    urls:
+    - assets/sysdepot-bitbucket-0.1.0.tgz
+    version: 0.1.0
   sysdepot-logging:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-05-09T10:08:39.866741-05:00"
+    created: "2025-02-25T20:19:43.105233114Z"
     description: A Helm chart for Kubernetes
     digest: ac545bd91ad481795556a331b15bd4871e598d1e89d0c54ed338ab9afb2b8771
     name: sysdepot-logging
@@ -11,4 +33,15 @@ entries:
     urls:
     - assets/sysdepot-logging-0.1.0.tgz
     version: 0.1.0
-generated: "2024-05-09T10:08:39.866166-05:00"
+  sysdepot-postgres:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-02-25T20:19:43.105498608Z"
+    description: A Helm chart for Kubernetes
+    digest: 0c3c05605714a3143b463fc00d875decba3babdf4983f9e26852eb58d3b0d7b3
+    name: sysdepot-postgres
+    type: application
+    urls:
+    - assets/sysdepot-postgres-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-02-25T20:19:43.103375447Z"
